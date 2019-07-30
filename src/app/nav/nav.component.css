@@ -1,0 +1,15 @@
+.wrapper {
+    margin: 0;
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 1px #B6C0CB;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+}

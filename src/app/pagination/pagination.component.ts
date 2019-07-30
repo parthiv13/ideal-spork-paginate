@@ -6,19 +6,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnInit {
-  @Input() page: number;
+  //@Input() page: number;
   @Input() count: number;
   @Input() perPage: number;
-  @Input() pagesToShow: number;
-  @Input() loading: boolean;
+  //@Input() pagesToShow: number;
+  //@Input() loading: boolean;
 
-  @Output() goPrev = new EventEmitter<boolean>();
-  @Output() goNext = new EventEmitter<boolean>();
-  @Output() goPage = new EventEmitter<number>();
+  //@Output() goPrev = new EventEmitter<boolean>();
+  //@Output() goNext = new EventEmitter<boolean>();
+  //@Output() goPage = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() { }/*
 
-  getMin(): number {
+  /*getMin(): number {
     return ((this.perPage * this.page) - this.perPage) + 1;
   }
 
@@ -71,9 +71,23 @@ export class PaginationComponent implements OnInit {
     }
     pages.sort((a, b) => a - b);
     return pages;
-  }
+  }*/
 
   ngOnInit() {
+  }
+
+  getPages(): number[] {
+    const pages: number[] = [];
+    const c = this.totalPages();
+    for(let i = 1; i <= c; i++) {
+      pages.push(i);
+    }
+    pages.sort((a,b) => a-b);
+    return pages;
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.count/this.perPage) || 0;
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IChannel } from './models/channel';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Constants } from './models/Constants';
 
@@ -13,7 +13,7 @@ export class ChannelsService {
     private http: HttpClient
   ) { }
 
-  getAllChannels(req?: any) {
-    return this.http.get('http://localhost:8080/channels', { params: req });
+  getAllChannels(req?: any): Observable<HttpResponse<IChannel[]>> {
+    return this.http.get<IChannel[]>('http://localhost:8080/channels', { params: req, observe: 'response' });
   }
 }
