@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, SimpleChanges, Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./channel-tools.component.css']
 })
 export class ChannelToolsComponent implements OnInit {
-
+  @Input() search: string;
   @Output() searchField = new EventEmitter<string>();
 
   searchFieldFM = new FormControl('', [Validators.required])
@@ -15,6 +15,11 @@ export class ChannelToolsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+    this.searchField.emit(this.search);
   }
 
 }
