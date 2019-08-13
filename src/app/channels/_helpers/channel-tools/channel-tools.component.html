@@ -2,7 +2,7 @@
   <div class="container">
     <div class="item">
       <mat-form-field>
-        <input matInput placeholder="Search by name" formControl="searchFieldFM" [(ngModel)]="search">
+        <input matInput placeholder="Search by name" [formControl]="searchFieldFM" [value]="search">
       </mat-form-field>
     </div>
       
