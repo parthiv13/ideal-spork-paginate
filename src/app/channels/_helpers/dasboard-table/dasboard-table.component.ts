@@ -10,6 +10,9 @@ import { ChannelsService } from '../../../channels.service';
 })
 export class DasboardTableComponent implements OnInit {
 
+  @Input("searchField")
+  searchString: string;
+
   displayedColumns: string[] = ['rank', 'grade', 'name', 'video_uploads', 'subscribers', 'video_views'];
   dataSource: MatTableDataSource<IChannel>;
   channels: IChannel[];
@@ -23,7 +26,6 @@ export class DasboardTableComponent implements OnInit {
 
   ngOnInit() {
     this.getChannels();
-    console.log(this.dataSource)
   }
 
   getChannels(): void {
