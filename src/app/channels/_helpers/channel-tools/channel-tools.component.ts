@@ -17,8 +17,10 @@ export class ChannelToolsComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
+  ngOnChanges(changes: SimpleChanges): void { }
+
+  updateSearchString($event) {
+    this.search = $event.target.value;
     this.searchField.emit(this.search);
   }
 

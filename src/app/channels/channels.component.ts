@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ChannelsService } from '../channels.service';
 import { IChannel } from '../models/channel';
 import { HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-channels',
@@ -19,7 +20,8 @@ export class ChannelsComponent implements OnInit {
   searchField: string;
 
   constructor(
-    private channelsService: ChannelsService
+    private channelsService: ChannelsService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -27,6 +29,11 @@ export class ChannelsComponent implements OnInit {
       this.searchField = '';
     }
     this.getChannels();
+  }
+
+  updateSearchString($event) {
+    this.searchField = $event;
+    this.router.navigate([`/channels`], { queryParams: { search: this.searchField }})
   }
 
   getChannels(): void {
