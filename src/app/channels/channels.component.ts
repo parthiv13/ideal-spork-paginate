@@ -25,10 +25,11 @@ export class ChannelsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.searchField == null || this.searchField == undefined) {
+    if(this.searchField === null || this.searchField === undefined) {
       this.searchField = '';
     }
     this.getChannels();
+    console.log(this.searchField)
   }
 
   updateSearchString($event) {
@@ -38,7 +39,7 @@ export class ChannelsComponent implements OnInit {
 
   getChannels(): void {
     this.loading = true;
-    this.channelsService.getAllChannels({ page: this.page, items: this.limit })
+    this.channelsService.getAllChannels({ page: this.page, items: this.limit }, this.searchField)
     .subscribe((res) => {
       console.log(res);
       this.total = parseInt(res.headers.get('X-Total-Count'));

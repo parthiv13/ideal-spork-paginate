@@ -13,7 +13,12 @@ export class ChannelsService {
     private http: HttpClient
   ) { }
 
-  getAllChannels(req?: any): Observable<HttpResponse<IChannel[]>> {
+  getAllChannels(req?: any, searchString?: string): Observable<HttpResponse<IChannel[]>> {
+    let searchQueryText: string;
+    if(searchString !== null || searchString !== undefined) {
+      searchQueryText = '?search=' + searchString;    return this.http.get<IChannel[]>('http://localhost:8080/channels', { params: req, observe: 'response' });
+      return this.http.get<IChannel[]>('http://localhost:8080/channels' + searchQueryText, { params: req, observe: 'response' });
+    }
     return this.http.get<IChannel[]>('http://localhost:8080/channels', { params: req, observe: 'response' });
   }
 }
