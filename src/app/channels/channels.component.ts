@@ -27,6 +27,8 @@ export class ChannelsComponent implements OnInit {
   ngOnInit() {
     if(this.searchField === null || this.searchField === undefined) {
       this.searchField = '';
+    } else {
+      
     }
     this.getChannels();
     console.log(this.searchField)
